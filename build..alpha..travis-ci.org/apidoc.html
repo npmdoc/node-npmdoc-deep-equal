@@ -63,6 +63,15 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.deep-equal.deep-equal">
+            function <span class="apidocSignatureSpan"></span>deep-equal
+            <span class="apidocSignatureSpan">(actual, expected, opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <a class="apidocElementLiA" href="#apidoc.element.deep-equal.is_arguments">
             function <span class="apidocSignatureSpan">deep-equal.</span>is_arguments
             <span class="apidocSignatureSpan">(object)</span>
@@ -74,6 +83,15 @@
 
             <a class="apidocElementLiA" href="#apidoc.element.deep-equal.keys">
             function <span class="apidocSignatureSpan">deep-equal.</span>keys
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.deep-equal.toString">
+            function <span class="apidocSignatureSpan">deep-equal.</span>toString
             <span class="apidocSignatureSpan">()</span>
             </a>
 
@@ -134,10 +152,59 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.deep-equal.toString">module deep-equal.toString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.deep-equal.toString.toString">
+            function <span class="apidocSignatureSpan">deep-equal.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.deep-equal" id="apidoc.module.deep-equal">module deep-equal</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.deep-equal.deep-equal" id="apidoc.element.deep-equal.deep-equal">
+        function <span class="apidocSignatureSpan"></span>deep-equal
+        <span class="apidocSignatureSpan">(actual, expected, opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">deep-equal = function (actual, expected, opts) {
+  if (!opts) opts = {};
+  // 7.1. All identical values are equivalent, as determined by ===.
+  if (actual === expected) {
+    return true;
+
+  } else if (actual instanceof Date &#x26;&#x26; expected instanceof Date) {
+    return actual.getTime() === expected.getTime();
+
+  // 7.3. Other pairs that do not both pass typeof value == &#x27;object&#x27;,
+  // equivalence is determined by ==.
+  } else if (!actual || !expected || typeof actual != &#x27;object&#x27; &#x26;&#x26; typeof expected != &#x27;object&#x27;) {
+    return opts.strict ? actual === expected : actual == expected;
+
+  // 7.4. For all other Object pairs, including Array objects, equivalence is
+  // determined by having the same number of owned properties (as verified
+  // with Object.prototype.hasOwnProperty.call), the same set of keys
+  // (although not necessarily the same order), equivalent values for every
+  // corresponding key, and an identical &#x27;prototype&#x27; property. Note: this
+  // accounts for both named and indexed properties on Arrays.
+  } else {
+    return objEquiv(actual, expected, opts);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 
     <h2>
@@ -163,6 +230,21 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function keys() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.deep-equal.toString" id="apidoc.element.deep-equal.toString">
+        function <span class="apidocSignatureSpan">deep-equal.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -253,6 +335,24 @@
   for (var key in obj) keys.push(key);
   return keys;
 }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.deep-equal.toString" id="apidoc.module.deep-equal.toString">module deep-equal.toString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.deep-equal.toString.toString" id="apidoc.element.deep-equal.toString.toString">
+        function <span class="apidocSignatureSpan">deep-equal.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
