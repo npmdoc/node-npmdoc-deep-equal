@@ -1,6 +1,6 @@
 # npmdoc-deep-equal
 
-#### api documentation for  [deep-equal (v1.0.1)](https://github.com/substack/node-deep-equal#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-deep-equal.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-deep-equal) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-deep-equal.svg)](https://travis-ci.org/npmdoc/node-npmdoc-deep-equal)
+#### basic api documentation for  [deep-equal (v1.0.1)](https://github.com/substack/node-deep-equal#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-deep-equal.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-deep-equal) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-deep-equal.svg)](https://travis-ci.org/npmdoc/node-npmdoc-deep-equal)
 
 #### node's assert.deepEqual algorithm
 
@@ -91,7 +91,8 @@
             ]
         }
     },
-    "version": "1.0.1"
+    "version": "1.0.1",
+    "bin": {}
 }
 ```
 
