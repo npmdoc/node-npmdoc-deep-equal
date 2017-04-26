@@ -81,15 +81,6 @@
 
         </li>
 
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.deep-equal.toString">
-            function <span class="apidocSignatureSpan">deep-equal.</span>toString
-            <span class="apidocSignatureSpan">()</span>
-            </a>
-
-        </li>
-
     </ol></li>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.deep-equal.is_arguments">module deep-equal.is_arguments</a><ol>
@@ -139,19 +130,6 @@
             <a class="apidocElementLiA" href="#apidoc.element.deep-equal.keys.shim">
             function <span class="apidocSignatureSpan">deep-equal.keys.</span>shim
             <span class="apidocSignatureSpan">(obj)</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
-    <li class="apidocModuleLi"><a href="#apidoc.module.deep-equal.toString">module deep-equal.toString</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.deep-equal.toString.toString">
-            function <span class="apidocSignatureSpan">deep-equal.</span>toString
-            <span class="apidocSignatureSpan">()</span>
             </a>
 
         </li>
@@ -227,21 +205,6 @@
     </ul>
 
 
-
-    <h2>
-        <a href="#apidoc.element.deep-equal.toString" id="apidoc.element.deep-equal.toString">
-        function <span class="apidocSignatureSpan">deep-equal.</span>toString
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">toString = function () {
-    return text;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
 </div>
 
 <div class="apidocSectionDiv">
@@ -273,7 +236,23 @@
     <li>description and source-code<pre class="apidocCodePre">function supported(object) {
   return Object.prototype.toString.call(object) == '[object Arguments]';
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        [1,2,3],
+        "differenciates array and arguments"
+    ));
+    t.end();
+});
+
+test('test the arguments shim', function (t) {
+    t.ok(isArguments.<span class="apidocCodeKeywordSpan">supported</span>((function(){return arguments})()));
+    t.notOk(isArguments.supported([1,2,3]));
+
+    t.ok(isArguments.unsupported((function(){return arguments})()));
+    t.notOk(isArguments.unsupported([1,2,3]));
+
+    t.end();
+});
+...</pre></li>
     </ul>
 
 
@@ -293,7 +272,23 @@
     !Object.prototype.propertyIsEnumerable.call(object, 'callee') ||
     false;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+t.end();
+});
+
+test('test the arguments shim', function (t) {
+t.ok(isArguments.supported((function(){return arguments})()));
+t.notOk(isArguments.supported([1,2,3]));
+
+t.ok(isArguments.<span class="apidocCodeKeywordSpan">unsupported</span>((function(){return arguments})()));
+t.notOk(isArguments.unsupported([1,2,3]));
+
+t.end();
+});
+
+test('test the keys shim', function (t) {
+t.deepEqual(objectKeys.shim({ a: 1, b : 2 }), [ 'a', 'b' ]);
+...</pre></li>
     </ul>
 
 
@@ -328,25 +323,23 @@
   for (var key in obj) keys.push(key);
   return keys;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
+    <li>example usage<pre class="apidocCodePre">...
+t.ok(isArguments.unsupported((function(){return arguments})()));
+t.notOk(isArguments.unsupported([1,2,3]));
 
+t.end();
+});
 
-</div>
+test('test the keys shim', function (t) {
+t.deepEqual(objectKeys.<span class="apidocCodeKeywordSpan">shim</span>({ a: 1, b : 2 }), [ 'a', 'b' ]);
+t.end();
+});
 
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.deep-equal.toString" id="apidoc.module.deep-equal.toString">module deep-equal.toString</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.deep-equal.toString.toString" id="apidoc.element.deep-equal.toString.toString">
-        function <span class="apidocSignatureSpan">deep-equal.</span>toString
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+test('dates', function (t) {
+var d0 = new Date(1387585278000);
+var d1 = new Date('Fri Dec 20 2013 16:21:18 GMT-0800 (PST)');
+t.ok(equal(d0, d1));
+...</pre></li>
     </ul>
 
 
